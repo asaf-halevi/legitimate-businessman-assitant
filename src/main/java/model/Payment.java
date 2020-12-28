@@ -12,7 +12,7 @@ public class Payment {
     private Integer id;
 
     @Column
-    private long businessId;
+    private Integer businessId;
 
     @Column
     private long amount;
@@ -20,7 +20,7 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(long businessId, long amount) {
+    public Payment(Integer businessId, long amount) {
         this.businessId = businessId;
         this.amount = amount;
     }
@@ -33,11 +33,11 @@ public class Payment {
         this.id = id;
     }
 
-    public long getBusinessId() {
+    public Integer getBusinessId() {
         return businessId;
     }
 
-    public void setBusinessId(long businessId) {
+    public void setBusinessId(Integer businessId) {
         this.businessId = businessId;
     }
 

@@ -15,7 +15,10 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    public Payment createPayment(long businessId, long amount) {
+    public Payment createPayment(Integer businessId, long amount) {
+//        if (amount <= 0) {
+//            throw new IllegalArgumentException("Make me an offer I can\'t refuse!");
+//        }
         return paymentRepository.save(new Payment(businessId, amount));
     }
 
