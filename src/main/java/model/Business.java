@@ -15,6 +15,9 @@ public class Business {
     @Column
     private String name;
 
+    public Business() {
+    }
+
     public Business(String name) {
         this.name = name;
     }

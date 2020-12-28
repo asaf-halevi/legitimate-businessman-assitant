@@ -17,6 +17,9 @@ public class Payment {
     @Column
     private long amount;
 
+    public Payment() {
+    }
+
     public Payment(long businessId, long amount) {
         this.businessId = businessId;
         this.amount = amount;
