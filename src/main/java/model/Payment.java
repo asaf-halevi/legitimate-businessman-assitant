@@ -1,22 +1,32 @@
 package model;
 
-public class Payment {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-    private long id;
+@Entity
+public class Payment {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column
     private long businessId;
+
+    @Column
     private long amount;
 
-    public Payment(long id, long businessId, long amount) {
-        this.id = id;
+    public Payment(long businessId, long amount) {
         this.businessId = businessId;
         this.amount = amount;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

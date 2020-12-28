@@ -1,19 +1,29 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Business {
-    private long id;
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column
     private String name;
 
-    public Business(long id, String name) {
-        this.id = id;
+    public Business(String name) {
         this.name = name;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
