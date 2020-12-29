@@ -1,18 +1,20 @@
-package com.example.LegitimateBusinessmanAssistant;
+package main;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import service.BusinessService;
-import service.PaymentService;
+import services.BusinessService;
+import services.PaymentService;
 
-@SpringBootApplication(scanBasePackages = {"service", "repo", "model"})
+@SpringBootApplication(scanBasePackages = {"controllers", "services", "repo", "entities"})
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"model"})
+@SpringBootConfiguration
+@EntityScan(basePackages = {"entities"})
 @EnableJpaRepositories(basePackages = {"repo"})
 public class LegitimateBusinessmanAssistantApplication implements CommandLineRunner {
 
@@ -35,9 +37,9 @@ public class LegitimateBusinessmanAssistantApplication implements CommandLineRun
         businessService.createBusiness("Eshkol IceCream");
         businessService.createBusiness("Shalom Falafel");
         businessService.createBusiness("DruidsBeUs");
-        paymentService.createPayment(1, 1000);
-        paymentService.createPayment(2, 2000);
-        paymentService.createPayment(3, 3000);
+        paymentService.createAndSavePayment(1, 1000);
+        paymentService.createAndSavePayment(2, 2000);
+        paymentService.createAndSavePayment(3, 3000);
     }
 
 }

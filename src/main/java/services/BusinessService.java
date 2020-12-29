@@ -1,6 +1,6 @@
-package service;
+package services;
 
-import model.Business;
+import entities.Business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repo.BusinessRepository;
