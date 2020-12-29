@@ -41,5 +41,4 @@ public class LegitimateBusinessmanAssistantApplication implements CommandLineRun
         paymentService.createAndSavePayment(2, 2000);
         paymentService.createAndSavePayment(3, 3000);
     }
-
 }

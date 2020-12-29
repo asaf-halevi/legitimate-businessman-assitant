@@ -8,6 +8,8 @@ import repo.PaymentRepository;
 @Service
 public class PaymentService {
 
+    public static final String ERROR_MESSAGE = "Make me an offer I can\'t refuse!";
+
     private PaymentRepository paymentRepository;
 
     @Autowired
@@ -19,9 +21,9 @@ public class PaymentService {
         return paymentRepository.save(createPayment(businessId, amount));
     }
 
-    protected Payment createPayment(Integer businessId, long amount) {
+    protected Payment createPayment(Integer businessId, long amount) throws IllegalArgumentException {
 //        if (amount <= 0) {
-//            throw new IllegalArgumentException("Make me an offer I can\'t refuse!");
+//            throw new IllegalArgumentException(ERROR_MESSAGE);
 //        }
         return new Payment(businessId, amount);
     }

@@ -20,8 +20,7 @@ public class PaymentServiceIntegrationTest {
     private PaymentService paymentService;
 
     @Test
-    public void testAddContactHappyPath() {
-
+    public void testAddPaymentWithPositiveValue() {
         final Integer businessId = 1;
         final long amount = 1000;
 
@@ -33,4 +32,43 @@ public class PaymentServiceIntegrationTest {
         assertEquals(businessId, payment.getBusinessId());
         assertEquals(amount, payment.getAmount());
     }
+
+//    @Test
+//    public void testAddPaymentWithZeroValue() {
+//        final Integer businessId = 1;
+//        final long amount = 0;
+//
+//        // Test adding a payment
+//        Payment payment = null;
+//        String errorMessage = null;
+//        try {
+//            payment = paymentService.createPayment(businessId, amount);
+//        } catch (IllegalArgumentException e) {
+//            errorMessage = e.getMessage();
+//        }
+//
+//        // Verify the addition
+//        assertNull(payment);
+//        assertEquals(PaymentService.ERROR_MESSAGE, errorMessage);
+//    }
+
+//    @Test
+//    public void testAddPaymentWithNegativeValue() {
+//        final Integer businessId = 1;
+//        final long amount = -1000;
+//
+//        // Test adding a payment
+//
+//        Payment payment = null;
+//        String errorMessage = null;
+//        try {
+//            payment = paymentService.createPayment(businessId, amount);
+//        } catch (IllegalArgumentException e) {
+//            errorMessage = e.getMessage();
+//        }
+//
+//        // Verify the addition
+//        assertNull(payment);
+//        assertEquals(PaymentService.ERROR_MESSAGE, errorMessage);
+//    }
 }

@@ -27,8 +27,34 @@ public class PaymentControllerIntegrationTest {
     PaymentController paymentController;
 
     @Test
-    public void addPaymentWithPositiveAmount() {
+    public void addPaymentWithPositiveAmountShouldSucceed() {
         Payment result = paymentController.addPayment(1, 1000);
         assertNotNull(result);
     }
+
+//    @Test
+//    public void addPaymentWithZeroAmountShouldFail() {
+//        Payment payment = null;
+//        String errorMessage = null;
+//        try {
+//            payment = paymentController.addPayment(1, 0);
+//        } catch (IllegalArgumentException e) {
+//            errorMessage = e.getMessage();
+//        }
+//        assertNull(payment);
+//        assertEquals(PaymentService.ERROR_MESSAGE, errorMessage);
+//    }
+
+//    @Test
+//    public void addPaymentWithNegativeAmountShouldFail() {
+//        Payment payment = null;
+//        String errorMessage = null;
+//        try {
+//            payment = paymentController.addPayment(1, -1);
+//        } catch (IllegalArgumentException e) {
+//            errorMessage = e.getMessage();
+//        }
+//        assertNull(payment);
+//        assertEquals(PaymentService.ERROR_MESSAGE, errorMessage);
+//    }
 }

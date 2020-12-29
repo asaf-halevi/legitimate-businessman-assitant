@@ -11,10 +11,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import repo.PaymentRepository;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -32,22 +30,53 @@ public class PaymentServiceUnitTest {
     }
 
     @Test
-    public void createPaymentWithValidValue() {
-        Payment paymentMock = new Payment(1, 1000);
+    public void createPaymentWithPositiveValue() {
+        final long amount = 1000;
 
         Payment payment = null;
         String errorMessage = null;
 
-        when(paymentRepository.save(any(Payment.class))).thenReturn(paymentMock);
-
         try {
-            payment = paymentService.createPayment(1, 1000);
+            payment = paymentService.createPayment(1, amount);
         } catch (Exception e) {
             errorMessage = e.getMessage();
         }
 
-        assertEquals(paymentMock.getAmount(), payment.getAmount());
+        assertEquals(amount, payment.getAmount());
         assertNull(errorMessage);
     }
 
+//    @Test
+//    public void createPaymentWithZeroValue() {
+//        final long amount = 0;
+//
+//        Payment payment = null;
+//        String errorMessage = null;
+//
+//        try {
+//            payment = paymentService.createPayment(1, amount);
+//        } catch (Exception e) {
+//            errorMessage = e.getMessage();
+//        }
+//
+//        assertNull(payment);
+//        assertNotNull(errorMessage);
+//    }
+
+//    @Test
+//    public void createPaymentWithNegativeValue() {
+//        final long amount = -1000;
+//
+//        Payment payment = null;
+//        String errorMessage = null;
+//
+//        try {
+//            payment = paymentService.createPayment(1, amount);
+//        } catch (Exception e) {
+//            errorMessage = e.getMessage();
+//        }
+//
+//        assertNull(payment);
+//        assertNotNull(errorMessage);
+//    }
 }
