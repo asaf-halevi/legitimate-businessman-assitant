@@ -20,6 +20,29 @@ public class PaymentServiceIntegrationTest {
     private PaymentService paymentService;
 
     @Test
+    public void testLookup() {
+        // Test get all payments
+        Iterable<Payment> payments = paymentService.lookup();
+
+        // Verify the addition
+        assertNotNull(payments);
+    }
+
+    @Test
+    public void testCreateAndSavePaymentWithPositiveValue() {
+        final Integer businessId = 1;
+        final long amount = 1000;
+
+        // Test adding a payment
+        Payment payment = paymentService.createAndSavePayment(businessId, amount);
+
+        // Verify the addition
+        assertNotNull(payment);
+        assertEquals(businessId, payment.getBusinessId());
+        assertEquals(amount, payment.getAmount());
+    }
+
+    @Test
     public void testAddPaymentWithPositiveValue() {
         final Integer businessId = 1;
         final long amount = 1000;
