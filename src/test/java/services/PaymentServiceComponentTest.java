@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE, classes = {LegitimateBusinessmanAssistantApplication.class})
-public class PaymentServiceIntegrationTest {
+public class PaymentServiceComponentTest {
 
     @Autowired
     private PaymentService paymentService;

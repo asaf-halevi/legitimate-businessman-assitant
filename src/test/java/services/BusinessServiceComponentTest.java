@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = {LegitimateBusinessmanAssistantApplication.class})
-public class BusinessServiceIntegrationTest {
+public class BusinessServiceComponentTest {
 
     @Autowired
     private BusinessService businessService;
