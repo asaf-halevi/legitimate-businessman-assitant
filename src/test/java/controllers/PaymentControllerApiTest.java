@@ -17,36 +17,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class PaymentControllerApiTest {
 
+    public static final String ADD_PAYMENT = "/addPayment/";
+
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void addPaymentWithPositiveAmountShouldSucceed() {
-        try {
-            this.mockMvc.perform(post("/addPayment/1/1000"))
-                    .andExpect(status().isOk());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void addPaymentWithPositiveAmountShouldSucceed() throws Exception {
+        this.mockMvc.perform(post(ADD_PAYMENT + "1/1000"))
+                .andExpect(status().isOk());
     }
 
 //    @Test
-//    public void addPaymentWithZeroAmountShouldFail() {
-//        try {
-//            this.mockMvc.perform(post("/addPayment/1/0"))
-//                    .andExpect(status().isBadRequest());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//    public void addPaymentWithZeroAmountShouldFail() throws Exception {
+//        this.mockMvc.perform(post(ADD_PAYMENT + "1/0"))
+//                .andExpect(status().isBadRequest());
 //    }
 //
 //    @Test
-//    public void addPaymentWithNegativeAmountShouldFail() {
-//        try {
-//            this.mockMvc.perform(post("/addPayment/1/-1000"))
-//                    .andExpect(status().isBadRequest());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//    public void addPaymentWithNegativeAmountShouldFail() throws Exception {
+//        this.mockMvc.perform(post(ADD_PAYMENT + "1/-1000"))
+//                .andExpect(status().isBadRequest());
 //    }
 }
