@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class CalcService {
 
     //TODO - add test before implementation
-    public int absoluteValue(int value) {
-        return 0;
+    public static int absoluteValue(int value) {
+        return -1;
     }
 }
