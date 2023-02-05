@@ -18,11 +18,15 @@ import services.PaymentService;
 @EnableJpaRepositories(basePackages = {"repo"})
 public class LegitimateBusinessmanAssistantApplication implements CommandLineRunner {
 
-    @Autowired
     private BusinessService businessService;
 
-    @Autowired
     private PaymentService paymentService;
+
+    @Autowired
+    public LegitimateBusinessmanAssistantApplication(BusinessService businessService, PaymentService paymentService) {
+        this.businessService = businessService;
+        this.paymentService = paymentService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(LegitimateBusinessmanAssistantApplication.class, args);
