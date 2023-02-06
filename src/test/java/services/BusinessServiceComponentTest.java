@@ -1,8 +1,10 @@
 package services;
 
+import categories.ComponentTest;
 import entities.Business;
 import main.LegitimateBusinessmanAssistantApplication;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +14,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = {LegitimateBusinessmanAssistantApplication.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes =
+        {LegitimateBusinessmanAssistantApplication.class})
+@Category(ComponentTest.class)
 public class BusinessServiceComponentTest {
 
     @Autowired

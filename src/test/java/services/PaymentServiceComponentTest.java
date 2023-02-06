@@ -1,19 +1,22 @@
 package services;
 
+import categories.ComponentTest;
 import entities.Payment;
 import main.LegitimateBusinessmanAssistantApplication;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE, classes = {LegitimateBusinessmanAssistantApplication.class})
+@Category(ComponentTest.class)
 public class PaymentServiceComponentTest {
 
     @Autowired
@@ -56,42 +59,29 @@ public class PaymentServiceComponentTest {
         assertEquals(amount, payment.getAmount());
     }
 
-//    @Test
-//    public void testAddPaymentWithZeroValue() {
-//        final Integer businessId = 1;
-//        final long amount = 0;
-//
-//        // Test adding a payment
-//        Payment payment = null;
-//        String errorMessage = null;
-//        try {
-//            payment = paymentService.createPayment(businessId, amount);
-//        } catch (IllegalArgumentException e) {
-//            errorMessage = e.getMessage();
-//        }
-//
-//        // Verify the addition
-//        assertNull(payment);
-//        assertEquals(PaymentService.ERROR_MESSAGE, errorMessage);
-//    }
+    @Test
+    @Ignore
+    public void testAddPaymentWithZeroValue() {
+        final Integer businessId = 1;
+        final long amount = 0;
 
-//    @Test
-//    public void testAddPaymentWithNegativeValue() {
-//        final Integer businessId = 1;
-//        final long amount = -1000;
-//
-//        // Test adding a payment
-//
-//        Payment payment = null;
-//        String errorMessage = null;
-//        try {
-//            payment = paymentService.createPayment(businessId, amount);
-//        } catch (IllegalArgumentException e) {
-//            errorMessage = e.getMessage();
-//        }
-//
-//        // Verify the addition
-//        assertNull(payment);
-//        assertEquals(PaymentService.ERROR_MESSAGE, errorMessage);
-//    }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            paymentService.createPayment(businessId, amount);
+        });
+
+        assertEquals(PaymentService.ERROR_MESSAGE, exception.getMessage());
+    }
+
+    @Test
+    @Ignore
+    public void testAddPaymentWithNegativeValue() {
+        final Integer businessId = 1;
+        final long amount = -1000;
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            paymentService.createPayment(businessId, amount);
+        });
+
+        assertEquals(PaymentService.ERROR_MESSAGE, exception.getMessage());
+    }
 }

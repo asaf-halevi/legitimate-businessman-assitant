@@ -1,8 +1,11 @@
 package services;
 
+import categories.UnitTest;
 import entities.Payment;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -12,10 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import repo.PaymentRepository;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@Category(UnitTest.class)
 public class PaymentServiceUnitTest {
 
     @Mock
@@ -46,37 +52,29 @@ public class PaymentServiceUnitTest {
         assertNull(errorMessage);
     }
 
-//    @Test
-//    public void createPaymentWithZeroValue() {
-//        final long amount = 0;
-//
-//        Payment payment = null;
-//        String errorMessage = null;
-//
-//        try {
-//            payment = paymentService.createPayment(1, amount);
-//        } catch (Exception e) {
-//            errorMessage = e.getMessage();
-//        }
-//
-//        assertNull(payment);
-//        assertNotNull(errorMessage);
-//    }
+    @Test
+    @Ignore
+    public void createPaymentWithZeroValue() {
+        final long amount = 0;
 
-//    @Test
-//    public void createPaymentWithNegativeValue() {
-//        final long amount = -1000;
-//
-//        Payment payment = null;
-//        String errorMessage = null;
-//
-//        try {
-//            payment = paymentService.createPayment(1, amount);
-//        } catch (Exception e) {
-//            errorMessage = e.getMessage();
-//        }
-//
-//        assertNull(payment);
-//        assertNotNull(errorMessage);
-//    }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            paymentService.createPayment(1, amount);
+        });
+
+        assertNotNull(exception);
+        assertNotNull(exception.getMessage());
+    }
+
+    @Test
+    @Ignore
+    public void createPaymentWithNegativeValue() {
+        final long amount = -1;
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            paymentService.createPayment(1, amount);
+        });
+
+        assertNotNull(exception);
+        assertNotNull(exception.getMessage());
+    }
 }

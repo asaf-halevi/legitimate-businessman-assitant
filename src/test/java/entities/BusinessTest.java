@@ -1,9 +1,12 @@
 package entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import categories.ComponentTest;
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@Category(ComponentTest.class)
 class BusinessTest {
     @Test
     void testConstructor() {
