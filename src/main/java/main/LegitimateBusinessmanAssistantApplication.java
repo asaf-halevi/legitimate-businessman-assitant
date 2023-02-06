@@ -18,9 +18,9 @@ import services.PaymentService;
 @EnableJpaRepositories(basePackages = {"repo"})
 public class LegitimateBusinessmanAssistantApplication implements CommandLineRunner {
 
-    private BusinessService businessService;
+    private final BusinessService businessService;
 
-    private PaymentService paymentService;
+    private final PaymentService paymentService;
 
     @Autowired
     public LegitimateBusinessmanAssistantApplication(BusinessService businessService, PaymentService paymentService) {
@@ -34,10 +34,10 @@ public class LegitimateBusinessmanAssistantApplication implements CommandLineRun
 
     @Override
     public void run(String... args) throws Exception {
-        createInitialdata();
+        createInitialData();
     }
 
-    private void createInitialdata() {
+    private void createInitialData() {
         businessService.createBusiness("Eshkol IceCream");
         businessService.createBusiness("Shalom Falafel");
         businessService.createBusiness("DruidsBeUs");

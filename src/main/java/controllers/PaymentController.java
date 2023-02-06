@@ -11,8 +11,12 @@ import services.PaymentService;
 @Controller
 public class PaymentController {
 
+    private final PaymentService paymentService;
+
     @Autowired
-    private PaymentService paymentService;
+    public PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     @PostMapping(value = "addPayment/{businessId}/{amount}")
     public @ResponseBody Payment addPayment(@PathVariable Integer businessId, @PathVariable long amount) {
