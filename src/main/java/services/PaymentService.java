@@ -22,9 +22,9 @@ public class PaymentService {
     }
 
     protected Payment createPayment(Integer businessId, long amount) throws IllegalArgumentException {
-//        if (amount <= 0) {
-//            throw new IllegalArgumentException(ERROR_MESSAGE);
-//        }
+        //        if (amount <= 0) {
+        //            throw new IllegalArgumentException(ERROR_MESSAGE);
+        //        }
         return new Payment(businessId, amount);
     }
 

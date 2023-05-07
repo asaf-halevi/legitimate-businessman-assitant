@@ -33,7 +33,7 @@ public class PaymentControllerApiTest {
     @Test
     public void addPaymentWithPositiveAmountShouldSucceed() throws Exception {
         this.mockMvc.perform(post(ADD_PAYMENT + "1/1000"))
-                    .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
